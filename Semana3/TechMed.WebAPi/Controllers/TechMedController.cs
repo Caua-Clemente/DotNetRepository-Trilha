@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using TechMed.WebAPi.Model;
 
 namespace TechMed.WebAPi.Controllers;
 
@@ -16,6 +18,12 @@ public class TechMedController : ControllerBase
     public TechMedController(ILogger<TechMedController> logger)
     {
         _logger = logger;
+    }
+
+    private readonly IOptions<OpeningTime> _openingTIme;
+    public TechMedController(IOptions<OpeningTime> openingTime)
+    {
+        _openingTIme = openingTime;
     }
 
     [HttpGet]

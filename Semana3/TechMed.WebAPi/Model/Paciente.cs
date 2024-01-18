@@ -1,4 +1,4 @@
-namespace TechMed.WebAPi;
+namespace TechMed.WebAPi.Model;
 
 public class Paciente
 {
