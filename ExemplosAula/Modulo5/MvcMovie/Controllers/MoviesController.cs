@@ -48,6 +48,8 @@ namespace MvcMovie.Controllers
         // GET: Movies/Create
         public IActionResult Create()
         {
+            ViewBag.Studios = new SelectList(_context.Studio, "Id", "Name");
+            ViewBag.Studios = new MultiSelectList(_context.Studio, "Id", "Name");
             return View();
         }
 
@@ -56,7 +58,7 @@ namespace MvcMovie.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,ReleaseDate,Genre,Price")] Movie movie)
+        public async Task<IActionResult> Create([Bind("Id,Title,ReleaseDate,Genre,Price, Studio, Artists")] Movie movie)
         {
             if (ModelState.IsValid)
             {
